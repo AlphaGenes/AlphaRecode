@@ -1,0 +1,6 @@
+AlphaRecode
+*.dwarf
+*.o
+*.mod
+*.i90
+*__genmod*
