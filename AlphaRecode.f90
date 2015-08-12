@@ -1,41 +1,7 @@
+
+
+#DEFINE SORTROUTINE "queue" ! If this is queue, queue SR is used, if this is normal, normal sorting is used, else pvseq is used
 !#############################################################################################################################################################################################################################
-
-module PedigreeTable
-    implicit none
-    integer,parameter :: lengan=20
-    public :: pedigreeLine
-    
-    type pedigreeLine
-        character*(lengan) :: ID
-        character*(lengan) :: Sire
-        character*(lengan) :: Dam
-        integer :: generation
-
-    end type pedigreeLine
-    type(pedigreeLine), parameter :: DICT_NULL = pedigreeLine('','','', 0)
-
-    interface operator ( == )
-      module procedure comparepedigreeline
-   end interface operator ( == )
-    contains
-
-        logical function comparePedigreeLine(l1,l2)
-            class(pedigreeLine), intent(in) :: l1,l2
-
-            if (l1%ID == l2%ID .and. l1%Sire == l2%Sire .and. l1%Dam == l2%Dam) then
-                comparePedigreeLine=.true.
-            else 
-                comparePedigreeLine=.false.
-            endif
-
-
-            return
-        end function comparePedigreeLine
-
-
-
-
-end module PedigreeTable
 
 
 
@@ -88,27 +54,32 @@ open (unit=3,file="AlphaRecodedPedigree.txt",status="unknown")
 
 call CountInData
 call ReadInData
-call sortPedigree
-! call PVseq(nAnisRawPedigree,nAnisP)
 
-! allocate(RecPed(0:nAnisP,3))
-  
-! RecPed(0,:)=0
-! do i=1,nAnisP
-!   RecPed(i,1)=i
-! enddo
-! RecPed(1:nAnisP,2)=seqsire(1:nAnisP)
-! RecPed(1:nAnisP,3)=seqdam(1:nAnisP)
+select case (SORTROUTINE)
 
-! do i=1,nAnisP
-!   write (3,'(3i20,a2,a20)') RecPed(i,:),'  ',Id(i)
-! enddo
+case ("queue")
+  call sortPedigreeWithQueue
+case ("normal")
+  call sortPedigree
+case default
+  call PVseq(nAnisRawPedigree,nAnisP)
 
+  allocate(RecPed(0:nAnisP,3))
+    
+  RecPed(0,:)=0
+  do i=1,nAnisP
+    RecPed(i,1)=i
+  enddo
+  RecPed(1:nAnisP,2)=seqsire(1:nAnisP)
+  RecPed(1:nAnisP,3)=seqdam(1:nAnisP)
 
-! deallocate(seqid)
-! deallocate(seqsire)
-! deallocate(seqdam)
-
+  do i=1,nAnisP
+    write (3,'(3i20,a2,a20)') RecPed(i,:),'  ',Id(i)
+  enddo
+  deallocate(seqid)
+  deallocate(seqsire)
+  deallocate(seqdam)
+end select
 end program AlphaRecode
 
 !#############################################################################################################################################################################################################################
@@ -154,9 +125,106 @@ enddo
 end subroutine ReadInData
 
 
+!#############################################################################################################################################################################################################################
 
+! This subroutine also sorts the pedigree based on a generation (so founders will always be first)
+subroutine sortPedigreeWithQueue
+use GlobalPedigree
+use dictModule
+use priority_queue_mod
+implicit none
+
+type(DICT_STRUCT), pointer     :: dict
+type (queue) :: q
+type(pedigreeLine), allocatable :: SortedPed(:)
+type(pedigreeLine) :: temp, temp2
+integer :: i = 1, maxNumberToLookAt
+integer(kind=1) :: switch = 0
+
+
+print *, "using Queue sort"
+
+maxNumberToLookAt = size(ped)
+
+do while (maxNumberToLookAt /= 0)
+  
+
+  ! If founder
+  if(ped(i)%sire == '0' .and. ped(i)%dam == '0') then
+    if (maxNumberToLookAt== size(ped)) then
+      ! set founder generation to 1
+      ped(i)%generation = 1
+      call dict_create( dict, ped(i)%id, ped(i) )
+    else 
+      call dict_add_key( dict, ped(i)%id, ped(i) )
+    endif
+    call q%enqueue(ped(i))
+    ! write(3,*) ped(i)%ID,ped(i)%sire,ped(i)%dam
+    temp = ped(maxNumberToLookAt)
+    ped(maxNumberToLookAt) = ped(i)
+    ped(i) = temp
+    maxNumberToLookAt = maxNumberToLookAt - 1 
+
+  endif 
+
+  ! If both parents have been defined
+  if (dict_has_key(dict,ped(i)%sire) .and. dict_has_key(dict,ped(i)%dam)) then
+    temp = dict_get_key(dict,ped(i)%dam)
+    temp2 = dict_get_key(dict,ped(i)%sire)
+
+    ! get maximum generation of parents and add 1
+    ped(i)%generation = max(temp%generation, temp2%generation) + 1
+    call q%enqueue(ped(i))
+    call dict_add_key( dict, ped(i)%id, ped(i))
+    temp = ped(maxNumberToLookAt)
+    ped(maxNumberToLookAt) = ped(i)
+    ped(i) = temp
+    maxNumberToLookAt = maxNumberToLookAt - 1 
+  endif 
+
+
+  ! if one pedigree is unknown and loop has already executed once
+  if ((ped(i)%sire == '0' .and. dict_has_key(dict,ped(i)%dam))) then
+    temp = dict_get_key(dict,ped(i)%dam)
+    ped(i)%generation = temp%generation + 1
+    call dict_add_key( dict, ped(i)%id, ped(i) )
+    call q%enqueue(ped(i))
+    temp = ped(maxNumberToLookAt)
+    ped(maxNumberToLookAt) = ped(i)
+    ped(i) = temp
+    maxNumberToLookAt = maxNumberToLookAt - 1 
+  endif
+
+  if ((ped(i)%dam == '0' .and. dict_has_key(dict,ped(i)%sire))) then
+    temp = dict_get_key(dict,ped(i)%sire)
+    ped(i)%generation = temp%generation + 1
+    call dict_add_key( dict, ped(i)%id, ped(i) )
+    call q%enqueue(ped(i))
+    ! write(3,*) ped(i)%ID,ped(i)%sire,ped(i)%dam
+    temp = ped(maxNumberToLookAt)
+    ped(maxNumberToLookAt) = ped(i)
+    ped(i) = temp
+    maxNumberToLookAt = maxNumberToLookAt - 1 
+  endif
+
+  i = i + 1 
+  if (i > maxNumberToLookAt) then
+    i = 1 ! reset counter to avoid decuring
+  endif
+enddo
+
+do while (q%n >0) 
+    temp = q%top()
+    write(3,*) temp%ID,temp%sire,temp%dam
+  end do
+
+call dict_destroy( dict )
+close(3)
+end subroutine sortPedigreeWithQueue
 
 !#############################################################################################################################################################################################################################
+
+! This subroutine sorts the pedigree based on purely if the parents have already been defined, with no concept of generations
 subroutine sortPedigree
 use GlobalPedigree
 use dictModule
@@ -172,7 +240,7 @@ type(pedigreeLine) :: temp
 integer :: i = 1, maxNumberToLookAt
 integer(kind=1) :: switch = 0
 
-
+print *, "using Normal sort"
 
 maxNumberToLookAt = size(ped)
 
@@ -246,6 +314,8 @@ INTEGER :: Noffset, Limit, Switch, ihold, ipoint
 integer :: nObs,nAnisPedigree,verbose
 character (LEN=lengan) :: path
 
+
+print *, "using PVseq sort"
 mode=1 
 
 allocate(id(0:nobs),sire(nobs),dam(nobs),seqid(nobs),seqsire(nobs),seqdam(nobs))

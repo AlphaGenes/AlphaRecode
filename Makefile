@@ -32,7 +32,7 @@ else
 	endif
 endif
 
-all: $(NAME)$(exe)
+all: $(NAME)$(exe) priority$(obj)
 
 
 debug: FFLAGS:= -i8 -traceback -g -D $(OSFLAG) -debug all -warn -check bounds -check format \
@@ -40,10 +40,17 @@ debug: FFLAGS:= -i8 -traceback -g -D $(OSFLAG) -debug all -warn -check bounds -c
 
 debug: all 
 
-$(NAME)$(exe): $(SRCDIR)$(NAME).f90
+
+$(NAME)$(exe): $(SRCDIR)$(NAME).f90 priority$(obj) pedigreeTable$(obj)
 	@echo "Compiling $(NAME)..."
-	$(FC)  $(SRCDIR)$(NAME).f90 $(FFLAGS) -o $(NAME)$(exe)
+	$(FC)  $(SRCDIR)$(NAME).f90 $(FFLAGS) priority$(obj) pedigreeTable$(obj) -o $(NAME)$(exe)
 	@echo
+
+priority$(obj): $(SRCDIR)priority.f90 pedigreeTable$(obj)
+	$(FC) -c $(FFLAGS) -o priority$(obj) $(SRCDIR)priority.f90
+
+pedigreeTable$(obj): $(SRCDIR)pedigreeTable.f90
+	$(FC) -c $(FFLAGS) -o pedigreeTable$(obj) $(SRCDIR)pedigreeTable.f90
 
 clean:
 	rm -rf *$(obj) *.mod *.dwarf *.i90 *__genmod* *~ $(NAME)$(exe)
