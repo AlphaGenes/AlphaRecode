@@ -24,11 +24,12 @@ else
 	OSFLAG := "OS_UNIX"
 	ABOPT := -mkl -static-intel -openmp-link=static
 	exe :=
-	FFLAGS:= $(FFLAGS) -mkl -i8 -static-intel -fpp -openmp-link=static  -D $(OSFLAG)
+	FFLAGS:= $(FFLAGS) -mkl -i8 -static-intel -fpp  -D $(OSFLAG)
 	uname := $(shell uname)
   # Linux only
 	ifeq ($(uname), Linux)
-		FFLAGS := $(FFLAGS) -static
+		FFLAGS := $(FFLAGS) 
+
 	endif
 endif
 
