@@ -28,7 +28,7 @@ else
 	uname := $(shell uname)
   # Linux only
 	ifeq ($(uname), Linux)
-		FFLAGS := $(FFLAGS) -static -static-libgcc -static-libstdc++
+		FFLAGS := $(FFLAGS) -static
 	endif
 endif
 
