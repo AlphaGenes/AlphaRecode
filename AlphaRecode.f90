@@ -137,14 +137,17 @@ implicit none
 type(DICT_STRUCT), pointer     :: dict
 type (queue) :: q
 type(pedigreeLine), allocatable :: SortedPed(:)
-type(pedigreeLine) :: temp, temp2
+type(pedigreeLine) :: temp, temp2,init
 integer :: i = 1, maxNumberToLookAt
 integer(kind=1) :: switch = 0
+logical :: dictCreated = .false.
 
 
 print *, "using Queue sort"
 
 maxNumberToLookAt = size(ped)
+
+init = ped(1)
 
 do while (maxNumberToLookAt /= 0)
   
@@ -155,6 +158,7 @@ do while (maxNumberToLookAt /= 0)
       ! set founder generation to 1
       ped(i)%generation = 1
       call dict_create( dict, ped(i)%id, ped(i) )
+      dictCreated = .true.
     else 
       call dict_add_key( dict, ped(i)%id, ped(i) )
     endif
@@ -168,6 +172,12 @@ do while (maxNumberToLookAt /= 0)
   endif 
 
   ! If both parents have been defined
+  if (.not. dictCreated) then
+    ! TODO fix this
+    call dict_create( dict, ped(i)%id, ped(i) )
+    dictCreated = .true.
+  endif
+
   if (dict_has_key(dict,ped(i)%sire) .and. dict_has_key(dict,ped(i)%dam)) then
     temp = dict_get_key(dict,ped(i)%dam)
     temp2 = dict_get_key(dict,ped(i)%sire)
@@ -205,12 +215,18 @@ do while (maxNumberToLookAt /= 0)
     ped(maxNumberToLookAt) = ped(i)
     ped(i) = temp
     maxNumberToLookAt = maxNumberToLookAt - 1 
+    
+  else if (ped(i) == ped(1) .and. ped(1) == init) then
+      write(*,'("error: parents can not be found. Dam",(a), " Sire ",a)')ped(i)%dam,ped(i)%sire
+      stop 1
   endif
 
   i = i + 1 
   if (i > maxNumberToLookAt) then
     i = 1 ! reset counter to avoid decuring
+
   endif
+
 enddo
 
 do while (q%n >0) 

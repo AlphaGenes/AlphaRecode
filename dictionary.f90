@@ -236,7 +236,6 @@ function dict_get_elem( dict, key ) result(elem)
     integer                      :: hash
 
     hash = dict_hashkey( trim(key) )
-
     elem => dict%table(hash)%list
     do while ( associated(elem) )
         if ( elem%data%key .eq. key ) then

@@ -38,7 +38,6 @@ all: $(NAME)$(exe) priority$(obj)
 
 debug: FFLAGS:= -i8 -traceback -g -D $(OSFLAG) -debug all -warn -check bounds -check format \
 		-check output_conversion -check pointers -check uninit -fpp
-
 debug: all 
 
 
