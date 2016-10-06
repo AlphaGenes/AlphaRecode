@@ -131,6 +131,9 @@ end subroutine ReadInData
 subroutine sortPedigreeWithQueue
 use GlobalPedigree
 use dictModule
+use, intrinsic :: iso_fortran_env, only : stdin=>input_unit, &
+                                          stdout=>output_unit, &
+                                          stderr=>error_unit
 use priority_queue_mod
 implicit none
 
@@ -138,7 +141,7 @@ type(DICT_STRUCT), pointer     :: dict
 type (queue) :: q
 type(pedigreeLine), allocatable :: SortedPed(:)
 type(pedigreeLine) :: temp, temp2,init
-integer :: i = 1, maxNumberToLookAt
+integer :: i = 1, maxNumberToLookAt, pass
 integer(kind=1) :: switch = 0
 logical :: dictCreated = .false.
 
@@ -148,7 +151,7 @@ print *, "using Queue sort"
 maxNumberToLookAt = size(ped)
 
 init = ped(1)
-
+pass = 0
 do while (maxNumberToLookAt /= 0)
   
 
@@ -216,15 +219,16 @@ do while (maxNumberToLookAt /= 0)
     ped(i) = temp
     maxNumberToLookAt = maxNumberToLookAt - 1 
     
-  else if (ped(i) == ped(1) .and. ped(1) == init) then
-      write(*,'("error: parents can not be found. Dam",(a), " Sire ",a)')ped(i)%dam,ped(i)%sire
+  else if (ped(i) == ped(1) .and. ped(1) == init .and. pass > 2) then
+      write(stderr,'("error: parents can not be found. Dam:",(a), " Sire:",a)')ped(i)%dam,ped(i)%sire
+      write(stderr,'("Please ensure these exist in the pedigree file specified.")')
       stop 1
   endif
 
   i = i + 1 
   if (i > maxNumberToLookAt) then
     i = 1 ! reset counter to avoid decuring
-
+    pass = pass + 1
   endif
 
 enddo
