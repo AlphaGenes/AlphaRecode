@@ -1,0 +1,15 @@
+# The fortran modules provided by this target.
+provides
+ alphahousemod
+ alphastatmod
+ hashmodule
+ helpersubroutines
+ individuallinkedlistmodule
+ individualmodule
+ inputfile
+ intelrngmod
+ linemodule
+ linkedlistmodule
+ pagemodule
+ pedigreemodule
+ stringmodule

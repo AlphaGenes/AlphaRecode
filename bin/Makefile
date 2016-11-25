@@ -67,17 +67,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.6.2/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -122,16 +111,27 @@ install/local/fast: install/local
 
 .PHONY : install/local/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/local/Cellar/cmake/3.6.2/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/david/alphasuitesoftware/alpharecode/CMakeFiles /Users/david/alphasuitesoftware/alpharecode/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /Users/david/alphasuitesoftware/alpharecode && $(CMAKE_COMMAND) -E cmake_progress_start /Users/david/alphasuitesoftware/alpharecode/CMakeFiles /Users/david/alphasuitesoftware/alpharecode/bin/CMakeFiles/progress.marks
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f CMakeFiles/Makefile2 bin/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/david/alphasuitesoftware/alpharecode/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f CMakeFiles/Makefile2 bin/clean
 .PHONY : clean
 
 # The main clean target
@@ -141,57 +141,87 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f CMakeFiles/Makefile2 bin/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f CMakeFiles/Makefile2 bin/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/david/alphasuitesoftware/alpharecode && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named distclean
+# Convenience name for target.
+bin/CMakeFiles/AlphaRecode.dir/rule:
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f CMakeFiles/Makefile2 bin/CMakeFiles/AlphaRecode.dir/rule
+.PHONY : bin/CMakeFiles/AlphaRecode.dir/rule
 
-# Build rule for target.
-distclean: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 distclean
-.PHONY : distclean
+# Convenience name for target.
+AlphaRecode: bin/CMakeFiles/AlphaRecode.dir/rule
 
-# fast build rule for target.
-distclean/fast:
-	$(MAKE) -f CMakeFiles/distclean.dir/build.make CMakeFiles/distclean.dir/build
-.PHONY : distclean/fast
-
-#=============================================================================
-# Target rules for targets named alphahouse
-
-# Build rule for target.
-alphahouse: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 alphahouse
-.PHONY : alphahouse
-
-# fast build rule for target.
-alphahouse/fast:
-	$(MAKE) -f objs/AH/CMakeFiles/alphahouse.dir/build.make objs/AH/CMakeFiles/alphahouse.dir/build
-.PHONY : alphahouse/fast
-
-#=============================================================================
-# Target rules for targets named AlphaRecode
-
-# Build rule for target.
-AlphaRecode: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 AlphaRecode
 .PHONY : AlphaRecode
 
 # fast build rule for target.
 AlphaRecode/fast:
-	$(MAKE) -f bin/CMakeFiles/AlphaRecode.dir/build.make bin/CMakeFiles/AlphaRecode.dir/build
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f bin/CMakeFiles/AlphaRecode.dir/build.make bin/CMakeFiles/AlphaRecode.dir/build
 .PHONY : AlphaRecode/fast
+
+AlphaRecodeSpecFileModule.o: AlphaRecodeSpecFileModule.f90.o
+
+.PHONY : AlphaRecodeSpecFileModule.o
+
+# target to build an object file
+AlphaRecodeSpecFileModule.f90.o:
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f bin/CMakeFiles/AlphaRecode.dir/build.make bin/CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.o
+.PHONY : AlphaRecodeSpecFileModule.f90.o
+
+AlphaRecodeSpecFileModule.i: AlphaRecodeSpecFileModule.f90.i
+
+.PHONY : AlphaRecodeSpecFileModule.i
+
+# target to preprocess a source file
+AlphaRecodeSpecFileModule.f90.i:
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f bin/CMakeFiles/AlphaRecode.dir/build.make bin/CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.i
+.PHONY : AlphaRecodeSpecFileModule.f90.i
+
+AlphaRecodeSpecFileModule.s: AlphaRecodeSpecFileModule.f90.s
+
+.PHONY : AlphaRecodeSpecFileModule.s
+
+# target to generate assembly for a file
+AlphaRecodeSpecFileModule.f90.s:
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f bin/CMakeFiles/AlphaRecode.dir/build.make bin/CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.s
+.PHONY : AlphaRecodeSpecFileModule.f90.s
+
+main.o: main.f90.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.f90.o:
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f bin/CMakeFiles/AlphaRecode.dir/build.make bin/CMakeFiles/AlphaRecode.dir/main.f90.o
+.PHONY : main.f90.o
+
+main.i: main.f90.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.f90.i:
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f bin/CMakeFiles/AlphaRecode.dir/build.make bin/CMakeFiles/AlphaRecode.dir/main.f90.i
+.PHONY : main.f90.i
+
+main.s: main.f90.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.f90.s:
+	cd /Users/david/alphasuitesoftware/alpharecode && $(MAKE) -f bin/CMakeFiles/AlphaRecode.dir/build.make bin/CMakeFiles/AlphaRecode.dir/main.f90.s
+.PHONY : main.f90.s
 
 # Help Target
 help:
@@ -200,14 +230,18 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
-	@echo "... distclean"
 	@echo "... list_install_components"
 	@echo "... install"
 	@echo "... install/strip"
 	@echo "... install/local"
-	@echo "... alphahouse"
+	@echo "... rebuild_cache"
 	@echo "... AlphaRecode"
+	@echo "... AlphaRecodeSpecFileModule.o"
+	@echo "... AlphaRecodeSpecFileModule.i"
+	@echo "... AlphaRecodeSpecFileModule.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
@@ -219,6 +253,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/david/alphasuitesoftware/alpharecode && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

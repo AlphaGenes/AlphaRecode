@@ -1,0 +1,1 @@
+/usr/local/bin/ifort     -static-intel -fpp -I/opt/intel/mkl/include -L/opt/intel/mkl/lib -qopenmp -qopenmp-link=static -L/opt/intel/mkl/lib -I/opt/intel/mkl/include -mkl -g -O0 -warn all -traceback -check bounds CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.o CMakeFiles/AlphaRecode.dir/main.f90.o  -o AlphaRecode  ../objs/AH/libalphahouse.a 
