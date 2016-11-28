@@ -1,5 +1,6 @@
 SET(ALPHARECODE_src
             ${SRCALPHARECODE}AlphaRecodeSpecFileModule.f90
+            ${SRCALPHARECODE}PedigreeExtractionModule.f90
             ${SRCALPHARECODE}main.f90
 
 )
