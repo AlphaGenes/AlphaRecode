@@ -3,8 +3,8 @@ PROJECT(AlphaImpute)
 enable_language (Fortran)
 
 if (WIN32)
-	execute_process(COMMAND CMD git rev-parse --short HEAD OUTPUT_VARIABLE SUBVERSION)
-	execute_process(COMMAND CMD git describe --abbrev=0 --tags OUTPUT_VARIABLE VERSION)
+	execute_process(COMMAND git rev-parse --short HEAD OUTPUT_VARIABLE SUBVERSION)
+	execute_process(COMMAND git describe --abbrev=0 --tags OUTPUT_VARIABLE VERSION)
 else()
 	execute_process(COMMAND git rev-parse --short HEAD OUTPUT_VARIABLE SUBVERSION)
 	execute_process(COMMAND git describe --tag OUTPUT_VARIABLE VERSION)
@@ -17,7 +17,7 @@ OPTION(USE_HDF5 "Use hdf"
        OFF)
 
 # Add our local modlues to the module path
-SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/../alphacmakefiles/cmake/modules")
+SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/./alphacmakefiles/cmake/modules")
 set(CMAKE_MACOSX_RPATH 0)
 
 
@@ -71,7 +71,7 @@ endif(${USE_HDF5})
 # RELEASE, and TESTING.  You should  review this file and make sure the flags
 # are to your liking.
 INCLUDE(${CMAKE_MODULE_PATH}/SetFortranFlags.cmake)
-SET(SRCAH ../alphahouse/src/)
+SET(SRCAH ./alphahouse/src/)
 
 # Have the .mod files placed in the OBJ folder
 SET(CMAKE_Fortran_MODULE_DIRECTORY ${OBJ})

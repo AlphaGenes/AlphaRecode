@@ -43,10 +43,10 @@ RM = /usr/local/Cellar/cmake/3.6.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/david/alphasuite/alpharecode
+CMAKE_SOURCE_DIR = /Users/daverous/roslin/alpharecode
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/david/alphasuite/alpharecode
+CMAKE_BINARY_DIR = /Users/daverous/roslin/alpharecode
 
 # Include any dependencies generated for this target.
 include bin/CMakeFiles/AlphaRecode.dir/depend.make
@@ -59,16 +59,16 @@ include bin/CMakeFiles/AlphaRecode.dir/flags.make
 
 bin/CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.o: bin/CMakeFiles/AlphaRecode.dir/flags.make
 bin/CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.o: src/AlphaRecodeSpecFileModule.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/david/alphasuite/alpharecode/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object bin/CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.o"
-	cd /Users/david/alphasuite/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /Users/david/alphasuite/alpharecode/src/AlphaRecodeSpecFileModule.f90 -o CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/daverous/roslin/alpharecode/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object bin/CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.o"
+	cd /Users/daverous/roslin/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /Users/daverous/roslin/alpharecode/src/AlphaRecodeSpecFileModule.f90 -o CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.o
 
 bin/CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.i"
-	cd /Users/david/alphasuite/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /Users/david/alphasuite/alpharecode/src/AlphaRecodeSpecFileModule.f90 > CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.i
+	cd /Users/daverous/roslin/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /Users/daverous/roslin/alpharecode/src/AlphaRecodeSpecFileModule.f90 > CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.i
 
 bin/CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.s"
-	cd /Users/david/alphasuite/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /Users/david/alphasuite/alpharecode/src/AlphaRecodeSpecFileModule.f90 -o CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.s
+	cd /Users/daverous/roslin/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /Users/daverous/roslin/alpharecode/src/AlphaRecodeSpecFileModule.f90 -o CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.s
 
 bin/CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.o.requires:
 
@@ -83,16 +83,16 @@ bin/CMakeFiles/AlphaRecode.dir/AlphaRecodeSpecFileModule.f90.o.provides.build: b
 
 bin/CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.o: bin/CMakeFiles/AlphaRecode.dir/flags.make
 bin/CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.o: src/PedigreeExtractionModule.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/david/alphasuite/alpharecode/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building Fortran object bin/CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.o"
-	cd /Users/david/alphasuite/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /Users/david/alphasuite/alpharecode/src/PedigreeExtractionModule.f90 -o CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/daverous/roslin/alpharecode/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building Fortran object bin/CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.o"
+	cd /Users/daverous/roslin/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /Users/daverous/roslin/alpharecode/src/PedigreeExtractionModule.f90 -o CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.o
 
 bin/CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.i"
-	cd /Users/david/alphasuite/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /Users/david/alphasuite/alpharecode/src/PedigreeExtractionModule.f90 > CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.i
+	cd /Users/daverous/roslin/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /Users/daverous/roslin/alpharecode/src/PedigreeExtractionModule.f90 > CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.i
 
 bin/CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.s"
-	cd /Users/david/alphasuite/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /Users/david/alphasuite/alpharecode/src/PedigreeExtractionModule.f90 -o CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.s
+	cd /Users/daverous/roslin/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /Users/daverous/roslin/alpharecode/src/PedigreeExtractionModule.f90 -o CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.s
 
 bin/CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.o.requires:
 
@@ -107,16 +107,16 @@ bin/CMakeFiles/AlphaRecode.dir/PedigreeExtractionModule.f90.o.provides.build: bi
 
 bin/CMakeFiles/AlphaRecode.dir/main.f90.o: bin/CMakeFiles/AlphaRecode.dir/flags.make
 bin/CMakeFiles/AlphaRecode.dir/main.f90.o: src/main.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/david/alphasuite/alpharecode/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building Fortran object bin/CMakeFiles/AlphaRecode.dir/main.f90.o"
-	cd /Users/david/alphasuite/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /Users/david/alphasuite/alpharecode/src/main.f90 -o CMakeFiles/AlphaRecode.dir/main.f90.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/daverous/roslin/alpharecode/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building Fortran object bin/CMakeFiles/AlphaRecode.dir/main.f90.o"
+	cd /Users/daverous/roslin/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /Users/daverous/roslin/alpharecode/src/main.f90 -o CMakeFiles/AlphaRecode.dir/main.f90.o
 
 bin/CMakeFiles/AlphaRecode.dir/main.f90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/AlphaRecode.dir/main.f90.i"
-	cd /Users/david/alphasuite/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /Users/david/alphasuite/alpharecode/src/main.f90 > CMakeFiles/AlphaRecode.dir/main.f90.i
+	cd /Users/daverous/roslin/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /Users/daverous/roslin/alpharecode/src/main.f90 > CMakeFiles/AlphaRecode.dir/main.f90.i
 
 bin/CMakeFiles/AlphaRecode.dir/main.f90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/AlphaRecode.dir/main.f90.s"
-	cd /Users/david/alphasuite/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /Users/david/alphasuite/alpharecode/src/main.f90 -o CMakeFiles/AlphaRecode.dir/main.f90.s
+	cd /Users/daverous/roslin/alpharecode/bin && /usr/local/bin/ifort  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /Users/daverous/roslin/alpharecode/src/main.f90 -o CMakeFiles/AlphaRecode.dir/main.f90.s
 
 bin/CMakeFiles/AlphaRecode.dir/main.f90.o.requires:
 
@@ -144,8 +144,8 @@ bin/AlphaRecode: bin/CMakeFiles/AlphaRecode.dir/main.f90.o
 bin/AlphaRecode: bin/CMakeFiles/AlphaRecode.dir/build.make
 bin/AlphaRecode: objs/AH/libalphahouse.a
 bin/AlphaRecode: bin/CMakeFiles/AlphaRecode.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/david/alphasuite/alpharecode/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking Fortran executable AlphaRecode"
-	cd /Users/david/alphasuite/alpharecode/bin && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/AlphaRecode.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/daverous/roslin/alpharecode/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking Fortran executable AlphaRecode"
+	cd /Users/daverous/roslin/alpharecode/bin && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/AlphaRecode.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 bin/CMakeFiles/AlphaRecode.dir/build: bin/AlphaRecode
@@ -159,10 +159,10 @@ bin/CMakeFiles/AlphaRecode.dir/requires: bin/CMakeFiles/AlphaRecode.dir/main.f90
 .PHONY : bin/CMakeFiles/AlphaRecode.dir/requires
 
 bin/CMakeFiles/AlphaRecode.dir/clean:
-	cd /Users/david/alphasuite/alpharecode/bin && $(CMAKE_COMMAND) -P CMakeFiles/AlphaRecode.dir/cmake_clean.cmake
+	cd /Users/daverous/roslin/alpharecode/bin && $(CMAKE_COMMAND) -P CMakeFiles/AlphaRecode.dir/cmake_clean.cmake
 .PHONY : bin/CMakeFiles/AlphaRecode.dir/clean
 
 bin/CMakeFiles/AlphaRecode.dir/depend:
-	cd /Users/david/alphasuite/alpharecode && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/david/alphasuite/alpharecode /Users/david/alphasuite/alpharecode/src /Users/david/alphasuite/alpharecode /Users/david/alphasuite/alpharecode/bin /Users/david/alphasuite/alpharecode/bin/CMakeFiles/AlphaRecode.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/daverous/roslin/alpharecode && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/daverous/roslin/alpharecode /Users/daverous/roslin/alpharecode/src /Users/daverous/roslin/alpharecode /Users/daverous/roslin/alpharecode/bin /Users/daverous/roslin/alpharecode/bin/CMakeFiles/AlphaRecode.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : bin/CMakeFiles/AlphaRecode.dir/depend
 
