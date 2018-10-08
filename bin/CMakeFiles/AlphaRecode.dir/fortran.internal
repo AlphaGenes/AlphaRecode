@@ -1,4 +1,4 @@
 # The fortran modules provided by this target.
 provides
- alpharecodespecfilemodule
- pedigreeextractionmodule
+ alpharecodespecfilemodule.mod
+ pedigreeextractionmodule.mod

@@ -87,7 +87,7 @@ module AlphaRecodeSpecFileModule
                         read(second(1),*) input%endGeneration
 
                     case default
-                        write(*,"(A,A)") trim(dumStr), " is not a valid input for macs"
+                        write(*,"(A,A)") trim(dumStr), " is not a valid input for alpharecode"
                     cycle
                 end select
             end if
