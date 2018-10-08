@@ -1,0 +1,15 @@
+SET(ALPHARECODE_src
+            ${SRCALPHARECODE}AlphaRecodeSpecFileModule.f90
+            ${SRCALPHARECODE}PedigreeExtractionModule.f90
+            ${SRCALPHARECODE}main.f90
+
+)
+
+add_definitions(-D COMMIT=${VERSION})
+ADD_EXECUTABLE(${ALPHARECODEEXE} ${ALPHARECODE_src})
+
+
+# add external links here
+TARGET_LINK_LIBRARIES(${ALPHARECODEEXE} ${AHLIB})
+
+INSTALL(TARGETS ${ALPHARECODEEXE} RUNTIME DESTINATION bin)

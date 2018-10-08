@@ -1,0 +1,6 @@
+pedigreeFilePath        ,Pedigree.txt
+genderfilepath    ,1500
+OutputFilePath   ,recoded.txt
+= Pedigree Extraction ================================================================
+ startGeneration     ,         2
+ endGeneration       ,         5
